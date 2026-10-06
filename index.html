@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Məryəm xanıma özəl 😎</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(
+        circle at center,
+        #321b22 0%,
+        #160b0e 45%,
+        #050505 100%
+    );
+    font-family: Georgia, "Times New Roman", serif;
+    color: white;
+}
+
+/* =========================
+   UÇUŞAN EMOJİLƏR
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 28px;
+    opacity: 0.8;
+    animation: float 8s ease-in-out infinite;
+}
+
+.e1 { left: 5%;  top: 15%; animation-duration: 9s; }
+.e2 { left: 80%; top: 10%; animation-duration: 11s; }
+.e3 { left: 15%; top: 75%; animation-duration: 10s; }
+.e4 { left: 85%; top: 70%; animation-duration: 12s; }
+.e5 { left: 45%; top: 8%;  animation-duration: 8s; }
+.e6 { left: 50%; top: 85%; animation-duration: 13s; }
+.e7 { left: 3%;  top: 45%; animation-duration: 10s; }
+.e8 { left: 90%; top: 40%; animation-duration: 9s; }
+
+@keyframes float {
+
+    0% {
+        transform: translateY(30px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-45px) rotate(12deg);
+    }
+
+    100% {
+        transform: translateY(30px) rotate(0deg);
+    }
+}
+
+/* =========================
+   BAŞLIQ
+========================= */
+
+.title {
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.25);
+}
+
+/* =========================
+   ƏSAS SƏHNƏ
+========================= */
+
+.scene {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    perspective: 1000px;
+}
+
+/* =========================
+   ZƏRF
+========================= */
+
+.envelope {
+    position: relative;
+
+    width: min(82vw, 360px);
+    height: 230px;
+
+    cursor: pointer;
+
+    transition: transform 0.5s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.03);
+}
+
+/* Zərfin gövdəsi */
+
+.envelope-body {
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        145deg,
+        #f4dfc0,
+        #d9b98d
+    );
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.65),
+        0 0 30px rgba(255,190,100,0.12);
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+/* Zərfin aşağı qatları */
+
+.envelope-body::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 125px solid rgba(170,125,80,0.35);
+}
+
+/* =========================
+   QAPAQ
+========================= */
+
+.flap {
+
+    position: absolute;
+
+    z-index: 8;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 130px;
+
+    background: linear-gradient(
+        145deg,
+        #f8e5c9,
+        #d8b789
+    );
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    transform-origin: top center;
+
+    transition:
+        transform 1s ease,
+        opacity 0.7s ease;
+
+    box-shadow:
+        0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   ZƏRFİN YAZISI
+========================= */
+
+.envelope-text {
+
+    position: absolute;
+
+    z-index: 9;
+
+    top: 45px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #4d3020;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    pointer-events: none;
+
+    transition: opacity 0.5s ease;
+}
+
+/* =========================
+   ÜRƏK MÖHÜRÜ
+========================= */
+
+.seal {
+
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+    top: 105px;
+
+    transform: translateX(-50%);
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #e63946,
+            #8b1118
+        );
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 27px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.4);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+/* =========================
+   MƏKTUB
+========================= */
+
+.letter {
+
+    position: absolute;
+
+    z-index: 5;
+
+    left: 50%;
+
+    top: 15px;
+
+    width: 88%;
+
+    min-height: 190px;
+
+    transform:
+        translateX(-50%)
+        translateY(30px);
+
+    background:
+        linear-gradient(
+            rgba(255,248,230,0.98),
+            rgba(244,224,188,0.98)
+        );
+
+    color: #40291e;
+
+    border-radius: 5px;
+
+    padding: 30px 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.5);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        transform 1s ease,
+        opacity 0.8s ease;
+}
+
+/* Məktub başlığı */
+
+.letter h2 {
+
+    font-size: 22px;
+
+    margin-bottom: 20px;
+}
+
+/* Məktub mətni */
+
+.letter p {
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+    font-weight: 500;
+}
+
+/* =========================
+   ZƏRF AÇILANDA
+========================= */
+
+.envelope.open .flap {
+
+    transform:
+        translateY(-145px)
+        rotateX(180deg);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.envelope.open .envelope-text {
+
+    opacity: 0;
+}
+
+.envelope.open .seal {
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0.5);
+}
+
+/* Məktub ortaya çıxır */
+
+.envelope.open .letter {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(-105px);
+
+    pointer-events: auto;
+
+    z-index: 20;
+}
+
+/* =========================
+   MƏKTUBUN İÇ YAZISI
+========================= */
+
+.secret-message {
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        max-height 1s ease;
+}
+
+.letter.revealed .secret-message {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    max-height: 200px;
+}
+
+/* =========================
+   ALT YAZI
+========================= */
+
+.hint {
+
+    position: absolute;
+
+    bottom: 8%;
+
+    width: 100%;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,0.7);
+
+    font-size: 15px;
+
+    animation:
+        pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* =========================
+   TELEFON
+========================= */
+
+@media (max-width: 500px) {
+
+    .title {
+
+        top: 7%;
+
+        font-size: 21px;
+    }
+
+    .envelope {
+
+        width: 82vw;
+
+        height: 215px;
+    }
+
+    .envelope-text {
+
+        font-size: 19px;
+    }
+
+    .letter {
+
+        width: 88%;
+
+        padding:
+            25px 20px;
+    }
+
+    .letter h2 {
+
+        font-size: 20px;
+    }
+
+    .letter p {
+
+        font-size: 18px;
+    }
+
+    .emoji {
+
+        font-size: 24px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     ARXA FON EMOJİLƏRİ
+========================= -->
+
+<div class="background">
+
+    <div class="emoji e1">😎</div>
+
+    <div class="emoji e2">🥰</div>
+
+    <div class="emoji e3">🥳</div>
+
+    <div class="emoji e4">😇</div>
+
+    <div class="emoji e5">❤️</div>
+
+    <div class="emoji e6">🫂</div>
+
+    <div class="emoji e7">✨</div>
+
+    <div class="emoji e8">💖</div>
+
+</div>
+
+
+<!-- =========================
+     BAŞLIQ
+========================= -->
+
+<div class="title">
+
+    💌 Məryəm xanıma özəl 😎
+
+</div>
+
+
+<!-- =========================
+     ZƏRF
+========================= -->
+
+<div class="scene">
+
+    <div
+        class="envelope"
+        id="envelope"
+    >
+
+        <!-- Zərfin gövdəsi -->
+
+        <div class="envelope-body"></div>
+
+
+        <!-- Qapaq -->
+
+        <div class="flap"></div>
+
+
+        <!-- Zərfin üstündə yazı -->
+
+        <div class="envelope-text">
+
+            Məryəm xanıma özəl 😎
+
+        </div>
+
+
+        <!-- Ürək möhürü -->
+
+        <div class="seal">
+
+            ❤️
+
+        </div>
+
+
+        <!-- Məktub -->
+
+        <div
+            class="letter"
+            id="letter"
+        >
+
+            <h2>
+
+                💌 Sənin üçün...
+
+            </h2>
+
+
+            <!-- Gizli yazı -->
+
+            <div class="secret-message">
+
+                <p>
+
+                    İyiki varsın arkadaşım 😇
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ALT TƏLİMAT
+========================= -->
+
+<div
+    class="hint"
+    id="hint"
+>
+
+    Zərfə toxun 💌
+
+</div>
+
+
+<script>
+
+const envelope =
+    document.getElementById("envelope");
+
+const letter =
+    document.getElementById("letter");
+
+const hint =
+    document.getElementById("hint");
+
+
+let envelopeOpened = false;
+
+let letterOpened = false;
+
+
+/* =========================
+   ZƏRFƏ TOXUNMA
+========================= */
+
+envelope.addEventListener(
+    "click",
+    function(event) {
+
+        /* Birinci toxunuş */
+
+        if (!envelopeOpened) {
+
+            envelopeOpened = true;
+
+            envelope.classList.add("open");
+
+            hint.textContent =
+                "İndi məktuba toxun 💌";
+
+            return;
+        }
+
+
+        /* İkinci toxunuş */
+
+        if (
+            !letterOpened &&
+            event.target.closest(".letter")
+        ) {
+
+            letterOpened = true;
+
+            letter.classList.add("revealed");
+
+            hint.textContent =
+                "❤️";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
